@@ -2,6 +2,7 @@ import File from "../models/File";
 import formatData from "../utils/formatData";
 import fileUploader from "../utils/fileUploader";
 import { Request, Response } from "express";
+
 const getFiles = async (req: Request, res: Response) => {
   try {
     const files = await File.find();
@@ -27,15 +28,6 @@ const getFileById = async (req: Request, res: Response) => {
   }
 };
 
-type FileUploadResult = {
-  fileName: string;
-  fileUrl: string;
-  fileSizeInBytes: number;
-  fileSizeInMb: string;
-  fileType: string;
-  downloads: number;
-};
-
 const uploadFile = async (req: Request, res: Response) => {
   try {
     if (req?.files?.length === 0)
@@ -44,7 +36,7 @@ const uploadFile = async (req: Request, res: Response) => {
     let filesUploaded = await Promise.all(
       files.map((file) => fileUploader(file))
     );
-    const result: FileUploadResult = formatData(files, filesUploaded);
+    const result = formatData(files, filesUploaded);
     const newFiles = await File.insertMany(result);
     res.status(200).json({ result: newFiles });
   } catch (err: any) {
