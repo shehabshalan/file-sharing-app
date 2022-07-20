@@ -1,8 +1,12 @@
+import { CloudinaryUploadResult, FileUploadResult } from "../types/fileTypes";
 import checkFormat from "./checkFormat";
-const formatData = (files: any, filesUploaded: any) => {
+const formatData = (
+  files: Express.Multer.File[],
+  filesUploaded: CloudinaryUploadResult[]
+): FileUploadResult[] => {
   const FROM_BYTES_TO_MB = 1000000;
-  let result = [] as any;
-  files.map((file: any, i: any) => {
+  let result: FileUploadResult[] = [];
+  files.map((file, i) => {
     result.push({
       fileName: file.originalname,
       fileUrl: filesUploaded[i].secure_url,
