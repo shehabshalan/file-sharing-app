@@ -7,6 +7,7 @@ import connectDB from "./config/db";
 
 // routes import
 import fileRoute from "./routes/files";
+import shareFileRoute from "./routes/shareFile";
 const cloudinary = require("cloudinary").v2;
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(express.json());
 
 // ** ROUTES **
 app.use("/api/files", fileRoute);
+app.use("/api/sharefile", shareFileRoute);
 
 app.get("*", (req: Request, res: Response) => {
   res.status(404).json({ msg: "Resource not found" });
