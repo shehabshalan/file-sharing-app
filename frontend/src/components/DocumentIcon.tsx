@@ -5,7 +5,7 @@ import {
   FaFilePdf,
 } from "react-icons/fa";
 import { RiFileTextFill } from "react-icons/ri";
-const DocumentIcon = (fileType: string) => (
+const DocumentIcon = ({ fileType }: { fileType: string }) => (
   <>
     {fileType === "doc" && <FaFileWord size={30} />}
     {fileType === "docx" && <FaFileWord size={30} />}
