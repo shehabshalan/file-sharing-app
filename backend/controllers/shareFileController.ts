@@ -30,29 +30,13 @@ const getSharedFileById = async (req: Request, res: Response) => {
       return res.status(403).json({ message: "file expired" });
     }
 
-    const file = await File.findById(sharedFile.fileId);
-    if (!file) return res.status(201).json({ message: "file not found" });
-
-    res.status(200).json({ result: file });
+    const filesIds = sharedFile.filesIds;
+    const files = await File.find({ _id: { $in: filesIds } });
+    if (!files) return res.status(404).json({ message: "No files found" });
+    res.status(200).json({ result: files });
   } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }
 };
 
-const createSharedFile = async (req: Request, res: Response) => {
-  try {
-    const { fileId, expiresAt } = req.body;
-    if (!fileId || !expiresAt)
-      return res
-        .status(400)
-        .json({ message: "File ID and expiration date are required" });
-    const newFile = await ShareFile.create({ fileId, expiresAt });
-    res.status(201).json({
-      result: `http://localhost:3000/sharefile/${newFile._id}`,
-    });
-  } catch (err: any) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-export { getSharedFiles, getSharedFileById, createSharedFile };
+export { getSharedFiles, getSharedFileById };

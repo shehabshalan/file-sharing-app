@@ -1,13 +1,13 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-interface IShareFileInterface extends Document {
-  fileId: string;
+export interface IShareFileInterface extends Document {
+  filesIds: string[];
   expiresAt: string;
 }
 const fileShareSchema = new Schema(
   {
-    fileId: {
-      type: String,
+    filesIds: {
+      type: [String],
       required: true,
     },
     expiresAt: {
