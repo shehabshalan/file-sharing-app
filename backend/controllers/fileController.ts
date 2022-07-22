@@ -2,6 +2,7 @@ import File from "../models/File";
 import formatData from "../utils/formatData";
 import fileUploader from "../utils/fileUploader";
 import { Request, Response } from "express";
+import ShareFile from "../models/ShareFile";
 
 const getFiles = async (req: Request, res: Response) => {
   try {
@@ -38,7 +39,14 @@ const uploadFile = async (req: Request, res: Response) => {
     );
     const result = formatData(files, filesUploaded);
     const newFiles = await File.insertMany(result);
-    res.status(200).json({ result: newFiles });
+
+    const createSharedFile = await ShareFile.create({
+      filesIds: newFiles.map((file) => file._id),
+      expiresAt: req.body.expiresAt,
+    });
+    res.status(201).json({
+      result: `http://localhost:3000/sharefile/${createSharedFile._id}`,
+    });
   } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
