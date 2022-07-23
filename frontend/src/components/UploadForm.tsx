@@ -53,7 +53,14 @@ function UploadForm() {
             type="file"
             multiple
           />
-          <Button variant="outlined" component="span" fullWidth>
+          <Button
+            sx={{
+              height: "5rem",
+            }}
+            variant="outlined"
+            component="span"
+            fullWidth
+          >
             <AddIcon />
           </Button>
         </label>
@@ -68,7 +75,7 @@ function UploadForm() {
           </>
         )}
 
-        {expirationDateTime && (
+        {expirationDateTime && filesUploaded.length > 0 && (
           <>
             <Typography component="p" variant="body1" align="left">
               <br />
