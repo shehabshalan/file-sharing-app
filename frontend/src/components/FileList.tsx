@@ -9,8 +9,8 @@ function FileList() {
       {filesUploaded.length > 0 && (
         <Paper elevation={1}>
           <List>
-            {filesUploaded.map((file: any) => (
-              <Item key={file.id} file={file} />
+            {filesUploaded.map((file: File, i: string) => (
+              <Item file={file} key={i} />
             ))}
           </List>
         </Paper>
