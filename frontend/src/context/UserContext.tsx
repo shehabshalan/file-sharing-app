@@ -10,7 +10,7 @@ export function UserContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [filesUploaded, setFilesUploaded] = useState<any[]>([]);
+  const [filesUploaded, setFilesUploaded] = useState<File[]>([]);
   const [expirationDateTime, setExpirationDateTime] = useState<any>(null);
   const [uploading, setUploading] = useState(false);
   const [sharingError, setSharingError] = useState(false);
@@ -18,10 +18,11 @@ export function UserContextProvider({
   const [sharingLink, setSharingLink] = useState("");
 
   const handleExpirationDateTime = (newValue: any) => {
-    setExpirationDateTime(newValue._d.toISOString());
+    setExpirationDateTime(newValue.toISOString());
   };
-  const handleFileChange = (e: any) => {
-    const selectedFiles = [...filesUploaded, ...e.target.files];
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    const selectedFiles: File[] = [...filesUploaded, ...(files as any)];
     console.log(selectedFiles);
 
     setFilesUploaded(selectedFiles);

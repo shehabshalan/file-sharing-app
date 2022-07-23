@@ -5,10 +5,24 @@ import { useParams } from "react-router-dom";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { CircularProgress } from "@mui/material";
 import SharedFileItem from "../components/SharedFileItem";
+
+export interface FileInterface {
+  _id: string;
+  fileName: string;
+  fileUrl: string;
+  fileType: string;
+  fileSizeInBytes: number;
+  fileSizeInMb: string;
+  downloads: number;
+  __v: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 function ShareFile() {
   const { id } = useParams();
 
-  const [files, setFiles] = useState<any[]>([]);
+  const [files, setFiles] = useState<FileInterface[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -37,7 +51,9 @@ function ShareFile() {
       }}
     >
       {error ? (
-        <Typography>No file found or the link has expired</Typography>
+        <Typography align="center">
+          No file found or the link has expired
+        </Typography>
       ) : loading ? (
         <CircularProgress />
       ) : (
@@ -56,7 +72,7 @@ function ShareFile() {
             alignItems="center"
           >
             {files.map((file) => (
-              <Grid item xs={12} sm={6} md={4} key={file.id}>
+              <Grid item xs={12} sm={6} md={4} key={file._id}>
                 <SharedFileItem file={file} />
               </Grid>
             ))}

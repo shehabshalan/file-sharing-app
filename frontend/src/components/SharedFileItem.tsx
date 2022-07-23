@@ -8,18 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import { Button, CardActions, Divider } from "@mui/material";
 import DocumentIcon from "./DocumentIcon";
-interface FileInterface {
-  _id: string;
-  fileName: string;
-  fileUrl: string;
-  fileType: string;
-  fileSizeInBytes: number;
-  fileSizeInMb: string;
-  downloads: number;
-  __v: number;
-  createdAt: string;
-  updatedAt: string;
-}
+import { FileInterface } from "../pages/ShareFile";
 
 const SharedFileItem = ({ file }: { file: FileInterface }) => {
   const supportedPreviewFileTypes = ["jpg", "png", "gif", "svg"];
