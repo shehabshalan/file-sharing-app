@@ -4,15 +4,17 @@ import cors, { CorsOptions } from "cors";
 import corsOptions from "./config/corsOptions";
 import mongoose from "mongoose";
 import connectDB from "./config/db";
+const cloudinary = require("cloudinary").v2;
+dotenv.config();
 
 // routes import
 import fileRoute from "./routes/files";
 import shareFileRoute from "./routes/shareFile";
-const cloudinary = require("cloudinary").v2;
-dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+
+// couldinary config
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_API_CLOUDNAME,
   api_key: process.env.CLOUDINARY_API_KEY,
