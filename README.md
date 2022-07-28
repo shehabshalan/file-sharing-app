@@ -20,38 +20,40 @@ Navigate to the document-library
   cd document-library
   ```
 <details close>
-<summary>**Backend**:</summary>
+<summary>Backend</summary>
  Navigate to backend folder
 <pre>
   cd backend
 </pre>
-- Install packages using  npm 
+Install packages using  npm 
 <pre>
   npm install
 </pre>
-- Create .env file in the root folder (below command uses windows cmd)
+Create .env file in the root folder (below command uses windows cmd)
 <pre>
   type . > .env
 </pre>
-- Run the backend
-  ```
+Run the backend
+<pre>
   npm start
-  ```
+</pre>
 </details>
+<details close>
+<summary>Frontend</summary>
 
-**Frontend**:
 - Navigate to frontend folder
-  ```
+<pre>
   cd frontend
-  ```
+</pre>
 - Install packages using npm
-    ```
+<pre>
   npm install
-  ```
+</pre>
 - Run the frontend
-  ```
+<pre>
   npm start
-  ```
+</pre>
+</details>
 
 ## How to test?
 - if both backend and frontend are running correctly, then you can navigate to localhost:3000.
