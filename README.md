@@ -1,9 +1,5 @@
 # What is this?
-The application is a document library intended to give its users a web based solution to store and share their documents with others.
-
-**Demo**: https://document-library-api.herokuapp.com/
-
-*Please allow for 20 seconds or so for the demo. it uses Heroku's free plan and it could take time to boot up.*
+it is a file sharing app intended to give its users a web based solution to share their files with others. 
 
 ### Requirements
 - Node v16
