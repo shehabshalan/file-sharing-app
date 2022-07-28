@@ -19,23 +19,26 @@ Navigate to the document-library
   ```
   cd document-library
   ```
-**Backend**:
-- Navigate to backend folder
-  ```
+<details close>
+<summary>**Backend**:</summary>
+ Navigate to backend folder
+<pre>
   cd backend
-  ```
+</pre>
 - Install packages using  npm 
-    ```
+<pre>
   npm install
-  ```
+</pre>
 - Create .env file in the root folder (below command uses windows cmd)
-  ```
+<pre>
   type . > .env
-  ```
+</pre>
 - Run the backend
   ```
   npm start
   ```
+</details>
+
 **Frontend**:
 - Navigate to frontend folder
   ```
@@ -49,30 +52,21 @@ Navigate to the document-library
   ```
   npm start
   ```
-## Assumptions:
-- There is no authentication hence the system is built for a single user, but files can shared with others.
-- Not all files will be previewed.
 
 ## How to test?
 - if both backend and frontend are running correctly, then you can navigate to localhost:3000.
 - upload a file or files using the upload area. 
-- each file such PDF / Excel / Word/ txt/ pictures documents will be assigned a corresponding icon based on the file type.
 - you will instantlly get the uploaded file/files in the document area. 
-- click on download to download or click on share to share the file for a specified duration. 
-- set the specified duration as you wish but make it one minute from your current time so you can see the link expiring after that 1 minute.
-- you will get a generated link, copy the link and paste it in a new tab. 
-- come back after one minute and try the copied link again. it should show that the link has expired.
+- set the expiration duration as you wish from the date and time picker. For example, 12 December at 8:00 pm.
+- click upload and a newly generated link will be shown which you can copy and send to someone. 
+- use the generated share link to access the files. File or files will be shown in cards with their metadata.
 
 ## Architecture
 
 ![architecture](https://user-images.githubusercontent.com/30008865/177472581-72341a49-766b-4f94-8c52-30bc97840223.png)
 
 ## Improvements
-- Adding authentication to allow more users and have each user only get their own uploads.
 - File validation such as type, size etc.
-- Document preview for all document types allowed, currently only images and pdfs support preview.
-- Web viewer for documents. This is to allow users to view documents inside the browser.
-- UI tweaks.
 
 ## Inside look:
 
