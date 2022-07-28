@@ -7,9 +7,9 @@ const getSharedFiles = async (req: Request, res: Response) => {
     const sharedFiles = await ShareFile.find();
     if (!sharedFiles)
       return res.status(404).send({ message: "No files found" });
-    res.status(200).json({ result: sharedFiles });
+    return res.status(200).json({ result: sharedFiles });
   } catch (err: any) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -33,7 +33,7 @@ const getSharedFileById = async (req: Request, res: Response) => {
     const filesIds = sharedFile.filesIds;
     const files = await File.find({ _id: { $in: filesIds } });
     if (!files) return res.status(404).json({ message: "No files found" });
-    res.status(200).json({ result: files });
+    return res.status(200).json({ result: files });
   } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }

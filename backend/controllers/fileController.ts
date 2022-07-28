@@ -8,9 +8,9 @@ const getFiles = async (req: Request, res: Response) => {
   try {
     const files = await File.find();
     if (!files) return res.status(404).send({ message: "No files found" });
-    res.json({ result: files });
+    return res.json({ result: files });
   } catch (err: any) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -44,11 +44,11 @@ const uploadFile = async (req: Request, res: Response) => {
       filesIds: newFiles.map((file) => file._id),
       expiresAt: req.body.expiresAt,
     });
-    res.status(201).json({
+    return res.status(201).json({
       result: `http://localhost:3000/sharefile/${createSharedFile._id}`,
     });
   } catch (err: any) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -66,7 +66,7 @@ const deleteFile = async (req: Request, res: Response) => {
         .json({ message: `File ID ${req.params.id} not found` });
     }
     const result = await file.remove();
-    res.json({ message: "File deleted" });
+    return res.json({ message: "File deleted" });
   } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }
@@ -87,7 +87,7 @@ const updateFileDownload = async (req: Request, res: Response) => {
         .json({ message: `File ID ${req.params.id} not found` });
     }
     const result = await file.updateOne({ $inc: { downloads: 1 } });
-    res.json({ result: `File updated ` });
+    return res.json({ result: `File updated ` });
   } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }
