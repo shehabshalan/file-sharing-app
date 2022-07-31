@@ -1,6 +1,8 @@
 # What is this?
 it is a file sharing app intended to give its users a web based solution to share their files with others. 
 
+Demo: https://react-file-sharing.netlify.app/
+
 ### Requirements
 - Node v16
 - React v18
