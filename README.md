@@ -11,11 +11,11 @@ Demo: https://react-file-sharing.netlify.app/
 **Clone the repo**. 
 
   ```
-  git clone https://github.com/shehabshalan/document-library
+  git clone https://github.com/shehabshalan/file-sharing-app
   ```
-Navigate to the document-library
+Navigate to the file-sharing-app
   ```
-  cd document-library
+  cd file-sharing-app
   ```
 <details close>
 <summary>Backend</summary>
