@@ -65,7 +65,7 @@ Run the backend
 
 ![architecture](https://user-images.githubusercontent.com/30008865/177472581-72341a49-766b-4f94-8c52-30bc97840223.png)
 
-## Improvements
+## To Do:
 - File validation such as type, size etc.
 
 ## Inside look:
